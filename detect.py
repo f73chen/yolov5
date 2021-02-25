@@ -28,7 +28,7 @@ def detect(save_img=False):
 
     # Initialize
     set_logging()
-    device = select_device(opt.device)
+    device =  torch.device('cpu')   # device = select_device(opt.device)
     half = device.type != 'cpu'  # half precision only supported on CUDA
 
     # Load model
@@ -45,7 +45,7 @@ def detect(save_img=False):
         import tensorflow as tf
         from tensorflow import keras
 
-        with open('data/coco.yaml') as f:
+        with open('data/data.yaml') as f:
             names = yaml.load(f, Loader=yaml.FullLoader)['names']  # class names (assume COCO)
 
         if suffix == '.pb':
